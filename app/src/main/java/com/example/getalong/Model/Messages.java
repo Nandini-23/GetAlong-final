@@ -5,10 +5,20 @@ public class Messages {
     String message;
     String senderId;
     String imageUrl;
+    String messageId;
     long timeStamp;
 
     public Messages() {
 
+    }
+
+
+    public String getMessageId() {
+        return messageId;
+    }
+
+    public void setMessageId(String messageId) {
+        this.messageId = messageId;
     }
 
     public Messages(String message, String senderId, long timeStamp) {

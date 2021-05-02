@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -73,9 +74,17 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
+                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                 progressDialog.dismiss();
-                                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-                                finish();
+                                if(user.isEmailVerified()){
+                                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                                    finish();
+                                }else{
+                                    user.sendEmailVerification();
+                                    Toast.makeText(LoginActivity.this, "check your mail to verify your account ", Toast.LENGTH_SHORT).show();
+
+                                }
+
                             } else {
                                 progressDialog.dismiss();
                                 Toast.makeText(LoginActivity.this, "Error in login", Toast.LENGTH_SHORT).show();
