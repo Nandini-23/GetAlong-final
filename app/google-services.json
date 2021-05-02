@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "179861904702",
+    "project_id": "getalong-final",
+    "storage_bucket": "getalong-final.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179861904702:android:956b023717d9aa0914206f",
+        "android_client_info": {
+          "package_name": "com.example.getalong"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "179861904702-373l7pi0p4pgesc13fuu46p3dpa04sr3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfW4FXL15iRpKUCZ-vB7_g57Dn0IEYuls"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "179861904702-373l7pi0p4pgesc13fuu46p3dpa04sr3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
