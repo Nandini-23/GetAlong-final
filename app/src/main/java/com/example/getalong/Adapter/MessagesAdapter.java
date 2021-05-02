@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -56,10 +57,24 @@ public class MessagesAdapter extends RecyclerView.Adapter {
         if(holder.getClass() == SenderViewHolder.class)
         {
             SenderViewHolder viewHolder = (SenderViewHolder) holder;
+
+            if(messages.getMessage().equals("photo"))
+            {
+                viewHolder.image.setVisibility(View.VISIBLE);
+                viewHolder.txtMessage.setVisibility(View.GONE);
+                Picasso.get().load(messages.getImageUrl()).placeholder(R.drawable.image_placeholder).into(viewHolder.image);
+            }
             viewHolder.txtMessage.setText(messages.getMessage());
             Picasso.get().load(sImage).into(viewHolder.circleImageView);
         } else {
             ReceiverViewHolder viewHolder = (ReceiverViewHolder) holder;
+
+            if(messages.getMessage().equals("photo"))
+            {
+                viewHolder.image.setVisibility(View.VISIBLE);
+                viewHolder.txtMessage.setVisibility(View.GONE);
+                Picasso.get().load(messages.getImageUrl()).placeholder(R.drawable.image_placeholder).into(viewHolder.image);
+            }
             viewHolder.txtMessage.setText(messages.getMessage());
             Picasso.get().load(rImage).into(viewHolder.circleImageView);
         }
@@ -87,12 +102,14 @@ public class MessagesAdapter extends RecyclerView.Adapter {
 
         CircleImageView circleImageView;
         TextView txtMessage;
+        ImageView image;
 
         public SenderViewHolder(@NonNull View itemView) {
             super(itemView);
 
             circleImageView = itemView.findViewById(R.id.profile_image);
             txtMessage = itemView.findViewById(R.id.txtMessages);
+            image = itemView.findViewById(R.id.image);
         }
     }
 
@@ -100,12 +117,14 @@ public class MessagesAdapter extends RecyclerView.Adapter {
 
         CircleImageView circleImageView;
         TextView txtMessage;
+        ImageView image;
 
         public ReceiverViewHolder(@NonNull View itemView) {
             super(itemView);
 
             circleImageView = itemView.findViewById(R.id.profile_image);
             txtMessage = itemView.findViewById(R.id.txtMessages);
+            image = itemView.findViewById(R.id.image);
         }
     }
 }
