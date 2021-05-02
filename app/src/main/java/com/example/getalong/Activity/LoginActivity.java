@@ -75,6 +75,7 @@ public class LoginActivity extends AppCompatActivity {
                             if(task.isSuccessful()){
                                 progressDialog.dismiss();
                                 startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                                finish();
                             } else {
                                 progressDialog.dismiss();
                                 Toast.makeText(LoginActivity.this, "Error in login", Toast.LENGTH_SHORT).show();
@@ -96,10 +97,8 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
-            Intent i = new Intent(Intent.ACTION_MAIN);
-            i.addCategory(Intent.CATEGORY_HOME);
-            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(i);
+            super.onBackPressed();
+            return;
         } else
         {
             Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();

@@ -94,6 +94,7 @@ public class HomeActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         FirebaseAuth.getInstance().signOut();
                         startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+                        finish();
                     }
                 });
 
@@ -119,10 +120,8 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
-            Intent i = new Intent(Intent.ACTION_MAIN);
-            i.addCategory(Intent.CATEGORY_HOME);
-            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(i);
+            super.onBackPressed();
+            return;
         } else
         {
             Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
